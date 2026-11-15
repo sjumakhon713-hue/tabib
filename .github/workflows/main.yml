@@ -2,6 +2,8 @@ name: Build APK
 on:
   push:
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-24.04
@@ -19,7 +21,11 @@ jobs:
         run: |
           yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null || true
           $HOME/gradle/gradle-8.11.1/bin/gradle assembleDebug --no-daemon --stacktrace
-      - uses: actions/upload-artifact@v4
-        with:
-          name: Tabib-APK
-          path: app/build/outputs/apk/debug/app-debug.apk
+          cp app/build/outputs/apk/debug/app-debug.apk Tabib.apk
+      - name: Publish APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "v${{ github.run_number }}" Tabib.apk \
+            --title "Табиб v${{ github.run_number }}" \
+            --notes "Барномаи Табиб барои Android"
