@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="tg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B0F17">
+<meta name="description" content="Табиб — духтур, клиника ва ёрии таъҷилӣ">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>Табиб — духтур, клиника ва ёрии таъҷилӣ</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Condensed:wght@600;700;800&display=swap">
+<style>
+  :root{--bg:#0B0F17;--bg2:#111722;--card:#161D2A;--card2:#1D2535;--line:#263044;--slate:#E8ECF2;--muted:#8D97AB;--red:#FF4D57;--red2:#3A1C24;--green:#2FD08C;--green2:#123327;--blue:#5B9BFF;--blue2:#17284A;--amber:#FFB547;--amber2:#3A2C12;--violet:#9B7BFF}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,Arial,sans-serif;background:#05070B;color:var(--slate);display:flex;justify-content:center;font-size:15px}
+  .phone{width:100%;max-width:430px;min-height:100vh;background:var(--bg);display:flex;flex-direction:column;position:relative}
+  .cond{font-family:Inter,Arial,sans-serif;font-weight:800;letter-spacing:-.02em}
+  header.top{background:radial-gradient(120% 140% at 0% 0%,#1B2A4A 0%,#0B0F17 60%);padding:18px 18px 20px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  header.top svg.ecg{position:absolute;left:0;right:0;bottom:4px;width:100%;height:40px;opacity:.35}
+  header.top svg.ecg path{stroke:var(--red)}
+  .brand{display:flex;align-items:center;justify-content:space-between;position:relative}
+  .logo{font-size:24px;font-weight:800;display:flex;align-items:center;gap:10px;letter-spacing:.08em}
+  .cross{width:30px;height:30px;background:linear-gradient(135deg,#FF6B73,#E1333E);border-radius:10px;position:relative;box-shadow:0 0 18px rgba(255,77,87,.55)}
+  .cross::before,.cross::after{content:'';position:absolute;background:#fff;border-radius:2px}
+  .cross::before{left:12px;top:6px;width:6px;height:18px}.cross::after{left:6px;top:12px;width:18px;height:6px}
+  .citybtn{background:var(--card2);border:1px solid var(--line);color:var(--slate);border-radius:999px;padding:8px 13px;font:600 13px Inter,sans-serif;cursor:pointer}
+  main{flex:1;padding:16px 16px 112px}
+  h1{font-size:28px;font-weight:800;line-height:1.1;letter-spacing:-.02em}
+  h2{font-size:19px;font-weight:800;margin:22px 0 12px;letter-spacing:-.01em}
+  h3{font-size:15.5px;font-weight:700}
+  .muted{color:var(--muted);font-size:13.5px}
+  .card{background:var(--card);border-radius:20px;padding:14px;margin-bottom:10px;border:1px solid var(--line)}
+  .row{display:flex;gap:10px;align-items:center}.between{justify-content:space-between}
+  .sos{background:radial-gradient(120% 160% at 100% 0%,#FF7A82 0%,#E1333E 45%,#9E1622 100%);color:#fff;border-radius:26px;padding:20px;display:flex;align-items:center;gap:16px;cursor:pointer;box-shadow:0 14px 40px rgba(255,77,87,.35);position:relative;overflow:hidden}
+  .sos .ring{width:70px;height:70px;border-radius:50%;background:#fff;color:#E1333E;display:flex;align-items:center;justify-content:center;font:800 24px Inter,sans-serif;flex:none;box-shadow:0 0 0 9px rgba(255,255,255,.18),0 0 0 18px rgba(255,255,255,.08)}
+  .sos h3{font-size:19px;letter-spacing:.06em}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:15px;cursor:pointer}
+  .tile .ic{width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:21px;margin-bottom:10px}
+  .specs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .spec{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:11px 4px;text-align:center;cursor:pointer;font-size:11.5px;font-weight:600;color:#C7CFDC}
+  .spec .e{font-size:22px;display:block;margin-bottom:5px}
+  .spec.on{border-color:var(--blue);background:var(--blue2);color:#fff}
+  .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:8px;scrollbar-width:none}
+  .chips button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 13px;font:600 13px Inter,sans-serif;white-space:nowrap;cursor:pointer;color:#C7CFDC}
+  .chips button.on{background:var(--blue);color:#06101F;border-color:var(--blue)}
+  .search{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:0 14px;margin-bottom:10px}
+  .search input,.search input[type=text]{border:none;outline:none;flex:1;padding:13px 0;margin:0;font:500 15px Inter,sans-serif;background:none;color:var(--slate)}
+  .doc{display:flex;gap:12px;cursor:pointer}
+  .ava{width:58px;height:58px;border-radius:18px;display:flex;align-items:center;justify-content:center;font:800 20px Inter,sans-serif;flex:none;color:#fff}
+  .tag{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;margin:5px 4px 0 0}
+  .t-green{background:var(--green2);color:var(--green)}.t-red{background:var(--red2);color:#FF8A91}.t-blue{background:var(--blue2);color:var(--blue)}.t-amber{background:var(--amber2);color:var(--amber)}.t-grey{background:#222A38;color:var(--muted)}
+  .btn{display:block;width:100%;border:none;border-radius:16px;padding:15px;font:700 15px Inter,sans-serif;cursor:pointer;background:var(--blue);color:#06101F;text-align:center;text-decoration:none}
+  .btn.red{background:linear-gradient(135deg,#FF6B73,#E1333E);color:#fff;box-shadow:0 10px 26px rgba(255,77,87,.3)}.btn.light{background:var(--card2);color:var(--slate);border:1px solid var(--line)}.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--slate)}
+  .btn:disabled{opacity:.35;cursor:not-allowed;box-shadow:none}
+  nav{position:fixed;bottom:12px;width:calc(100% - 24px);max-width:406px;background:rgba(22,29,42,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:24px;display:flex;justify-content:space-around;padding:8px 4px;z-index:5;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+  nav button{background:none;border:none;color:#6E7A90;font:600 10.5px Inter,sans-serif;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:7px 9px;position:relative;border-radius:16px}
+  nav button.on{color:#fff;background:var(--card2)}
+  nav button.on svg{color:var(--red)}
+  nav svg{width:22px;height:22px}
+  .badge{position:absolute;top:2px;right:4px;background:var(--red);color:#fff;font-size:10px;font-weight:700;border-radius:99px;padding:1px 6px}
+  .overlay{position:fixed;inset:0;background:rgba(3,5,9,.7);display:none;align-items:flex-end;justify-content:center;z-index:10}
+  .overlay.show{display:flex}
+  .sheet{background:var(--bg2);border-top:1px solid var(--line);width:100%;max-width:430px;border-radius:28px 28px 0 0;padding:20px 16px 24px;max-height:92vh;overflow-y:auto;animation:up .22s ease}
+  @keyframes up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+  .call{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:8px;text-decoration:none;color:var(--slate)}
+  .call .n{font:800 26px Inter,sans-serif;width:64px;text-align:center;color:var(--red)}
+  .call.main{background:linear-gradient(135deg,#FF6B73,#E1333E);border-color:transparent;color:#fff;box-shadow:0 10px 26px rgba(255,77,87,.3)}.call.main .n{color:#fff}
+  .sign{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .sign:last-child{border-bottom:none}
+  .sign .e{font-size:22px;width:30px;text-align:center;flex:none}
+  .back{width:40px;height:40px;border-radius:14px;background:var(--card);border:1px solid var(--line);font-size:19px;cursor:pointer;color:var(--slate)}
+  .hero{background:radial-gradient(120% 140% at 0% 0%,#1B2A4A 0%,#111722 70%);color:#fff;margin:-16px -16px 0;padding:16px 16px 22px;border-radius:0 0 28px 28px;border-bottom:1px solid var(--line)}
+  .hero .muted{color:#A9B3C6}
+  .info{background:var(--card);border-radius:20px;padding:2px 14px;border:1px solid var(--line);margin-top:12px}
+  .li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+  .li:last-child{border-bottom:none}
+  .li .ic{width:34px;height:34px;border-radius:11px;background:var(--card2);display:flex;align-items:center;justify-content:center;flex:none;font-size:15px}
+  .li a{color:var(--blue)!important}
+  .days{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+  .days button{min-width:60px;border:1px solid var(--line);background:var(--card);border-radius:16px;padding:9px 4px;font:600 13px Inter,sans-serif;cursor:pointer;color:#C7CFDC;display:flex;flex-direction:column;align-items:center;gap:2px}
+  .days button b{font-size:18px;color:#fff}
+  .slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .slots button{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:10px 0;font:600 14px Inter,sans-serif;cursor:pointer;color:#C7CFDC}
+  .days button.on,.slots button.on{background:var(--blue);border-color:var(--blue);color:#06101F}
+  .days button.on b{color:#06101F}
+  .seg{display:flex;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px;gap:4px}
+  .seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 4px;font:600 13.5px Inter,sans-serif;cursor:pointer;color:var(--muted)}
+  .seg button.on{background:var(--card2);color:#fff;box-shadow:inset 0 0 0 1px #34405A}
+  input[type=text],input[type=tel],textarea,select{width:100%;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px;font:500 15px Inter,sans-serif;color:var(--slate);margin-bottom:10px}
+  input::placeholder,textarea::placeholder{color:#5E6A80}
+  label.f{font-size:11.5px;font-weight:700;color:var(--muted);display:block;margin:16px 0 8px;text-transform:uppercase;letter-spacing:.1em}
+  .sticky{position:fixed;bottom:0;width:100%;max-width:430px;padding:12px 16px 18px;background:linear-gradient(180deg,rgba(11,15,23,0) 0%,var(--bg) 35%);z-index:6}
+  .ok{background:var(--card);border-radius:24px;padding:24px 18px;text-align:center;border:1px solid var(--line)}
+  .ok .big{width:76px;height:76px;border-radius:50%;background:var(--green2);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 12px;box-shadow:0 0 30px rgba(47,208,140,.25)}
+  .code{font:800 26px Inter,sans-serif;letter-spacing:4px;background:var(--card2);border:1px dashed #3A4762;border-radius:14px;padding:10px;margin:12px 0;color:#fff}
+  .appt{background:var(--card);border-radius:20px;padding:14px;margin-bottom:10px;border:1px solid var(--line);border-left:4px solid var(--blue)}
+  .mc{background:radial-gradient(120% 140% at 100% 0%,#3A2440 0%,#1D2535 55%,#161D2A 100%);color:#fff;border-radius:24px;padding:18px;position:relative;overflow:hidden;border:1px solid #34405A}
+  .mc .k{color:#8D97AB;font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+  .mc .v{font-weight:700;font-size:15px;margin-top:2px}
+  .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:var(--card2);border:1px solid var(--line);color:#fff;padding:12px 18px;border-radius:14px;font-weight:600;z-index:20;display:none;max-width:90%;text-align:center}
+  .toast.show{display:block;animation:up .2s}
+  .demo{font-size:12px;text-align:center;color:#6E7A90;margin:14px 0 0;line-height:1.5}
+  .warn{background:var(--red2);border:1px solid #5A2530;border-radius:16px;padding:12px 14px;font-size:13.5px;line-height:1.5;color:#FFB3B8}
+  .install{display:none;background:var(--blue2);border:1px solid #2A4372;border-radius:18px;padding:12px 14px;margin-top:12px;align-items:center;gap:12px}
+  .install.show{display:flex}
+</style>
+</head>
+<body>
+<div class="phone" id="app"></div>
+<div class="overlay" id="ov"><div class="sheet" id="sheet"></div></div>
+<div class="toast" id="toast"></div>
+<script>
+const ECG='<svg class="ecg" viewBox="0 0 400 40" preserveAspectRatio="none"><path d="M0 24 H120 L130 24 L138 8 L146 36 L154 4 L162 24 H250 L258 24 L264 14 L270 30 L276 24 H400" stroke="#fff" stroke-width="2" fill="none"/></svg>';
+const CITIES=['Душанбе','Хуҷанд','Кӯлоб','Бохтар'];
+const SPEC={
+ therapist:{n:'Терапевт',e:'🩺'},pediatr:{n:'Педиатр',e:'🧸'},cardio:{n:'Кардиолог',e:'❤️'},neuro:{n:'Невролог',e:'🧠'},
+ gyn:{n:'Гинеколог',e:'🌸'},lor:{n:'ЛОР',e:'👂'},eye:{n:'Окулист',e:'👁️'},derm:{n:'Дерматолог',e:'🧴'},
+ trauma:{n:'Травматолог',e:'🦴'},endo:{n:'Эндокринолог',e:'🧪'},surgeon:{n:'Ҷарроҳ',e:'🔪'},dent:{n:'Дандонпизишк',e:'🦷'}
+};
+const COLORS=['#3D7BFF','#1FB57A','#E8434D','#8A63FF','#E08A16','#13A6B5'];
+// Маълумоти намунавӣ: клиникаҳо ва духтурон бофта шудаанд
+const CL_T=[
+ {k:'h',n:'Беморхонаи бисёрсоҳа',e:'🏥',er:true,dep:['therapist','cardio','neuro','surgeon','trauma','gyn'],h:'24/7'},
+ {k:'d',n:'Маркази ташхис',e:'🔬',er:false,dep:['therapist','endo','cardio','eye','derm'],h:'08:00–18:00'},
+ {k:'k',n:'Маркази тиббии кӯдакон',e:'🧸',er:true,dep:['pediatr','lor','eye','trauma'],h:'24/7'},
+ {k:'f',n:'Клиникаи оилавӣ',e:'🏠',er:false,dep:['therapist','pediatr','gyn','lor','dent','derm'],h:'08:00–20:00'}
+];
+const AREAS={'Душанбе':['маркази шаҳр','ноҳияи Сино','ноҳияи Фирдавсӣ','ноҳияи Шоҳмансур'],'Хуҷанд':['маркази шаҳр','18-мкр','назди Панҷшанбе','соҳили Сирдарё'],'Кӯлоб':['маркази шаҳр','кӯчаи Борбад','маҳаллаи Сино','кӯчаи Шоҳтемур'],'Бохтар':['маркази шаҳр','мкр. 1','назди бозор','соҳили Вахш']};
+const CLINICS=CITIES.flatMap((c,ci)=>CL_T.map((t,ti)=>({id:'c'+ci+t.k,k:t.k,city:c,n:t.n,e:t.e,er:t.er,dep:t.dep,h:t.h,a:AREAS[c][ti],dist:(1.2+((ci*3+ti*7)%9)*0.6).toFixed(1)})));
+const FN_M=['Фирӯз','Бахтиёр','Ҷамшед','Дилшод','Рустам','Фаррух','Сӯҳроб','Комрон','Парвиз','Шерзод','Хуршед','Умед'];
+const FN_F=['Мадина','Нилуфар','Зарина','Гулнора','Малика','Дилафрӯз','Шаҳноза','Сабрина','Мунира','Фарангис','Нигина','Озода'];
+const LN=['Раҳимов','Назаров','Каримов','Саидов','Мирзоев','Шарипов','Ҳақназаров','Юсупов','Давлатов','Олимов','Холов','Ашуров'];
+const SK=Object.keys(SPEC);
+const DOCS=[];
+CITIES.forEach((c,ci)=>SK.forEach((s,si)=>{
+  const cls=CLINICS.filter(x=>x.city===c&&x.dep.includes(s));const cl=cls.length?cls[(si+ci)%cls.length]:CLINICS.find(x=>x.city===c&&x.k==='f');
+  const f=(si+ci)%2===0, i=(si*5+ci*3)%12;
+  const ln=LN[(si*7+ci)%12]+(f?'а':'');
+  DOCS.push({id:'d'+ci+'-'+si,city:c,spec:s,n:(f?FN_F[i]:FN_M[i])+' '+ln,f,exp:4+((si*7+ci*5)%22),clinic:(cl||CLINICS.find(x=>x.city===c)).id,price:[60,80,100,120,150][(si+ci)%5],online:(si+ci)%3!==1,lang:'тоҷикӣ, русӣ'+((si+ci)%4===0?', англисӣ':''),col:COLORS[(si+ci)%COLORS.length]});
+}));
+const DAYS=['Яш','Дш','Сш','Чш','Пш','Ҷм','Шб'];
+const MONTHS=['январ','феврал','март','апрел','май','июн','июл','август','сентябр','октябр','ноябр','декабр'];
+let S=load()||{city:'Душанбе',appts:[],card:{name:'',blood:'',allergy:'',chronic:'',meds:'',contact:''}};
+let tab='home',view=null,spec='all',q='',cur=null,bk=null;
+function load(){try{const r=localStorage.getItem('tabib');return r?JSON.parse(r):null}catch(e){return null}}
+function save(){try{localStorage.setItem('tabib',JSON.stringify(S))}catch(e){}}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>el.classList.remove('show'),2600)}
+function closeSheet(){document.getElementById('ov').classList.remove('show')}
+function openSheet(h){document.getElementById('sheet').innerHTML=h;document.getElementById('ov').classList.add('show');document.getElementById('sheet').scrollTop=0}
+document.getElementById('ov').addEventListener('click',e=>{if(e.target.id==='ov')closeSheet()});
+const D=id=>DOCS.find(x=>x.id===id), CL=id=>CLINICS.find(x=>x.id===id);
+function initials(n){return n.split(' ').map(x=>x[0]).join('').slice(0,2)}
+function docAva(d,s){return `<div class="ava" style="background:${d.col};${s?`width:${s}px;height:${s}px;font-size:${s*.36}px;border-radius:${s/3.4}px`:''}">${initials(d.n)}</div>`}
+function nextDays(){const o=[];const d=new Date();for(let i=0;i<9;i++){const x=new Date(d);x.setDate(d.getDate()+i);if(x.getDay()!==0)o.push(x)}return o.slice(0,7)}
+function fmtDay(v){const d=new Date(v+'T12:00:00');return `${d.getDate()} ${MONTHS[d.getMonth()]}`}
+function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function slotsFor(d,day){const all=['09:00','09:30','10:00','10:30','11:00','11:30','14:00','14:30','15:00','15:30','16:00','16:30'];const seed=[...d.id].reduce((x,c)=>x+c.charCodeAt(0),0)+(+day.slice(8))*3;return all.filter((s,i)=>(i+seed)%4!==0&&(i*7+seed)%5!==0)}
+function dayLabel(x){const t=new Date();t.setHours(0,0,0,0);const y=new Date(x);y.setHours(0,0,0,0);const diff=Math.round((y-t)/864e5);return diff===0?'Имрӯз':diff===1?'Пагоҳ':DAYS[x.getDay()]+', '+x.getDate()}
+function nearest(d){const days=nextDays();for(const x of days){const v=iso(x);let s=slotsFor(d,v);if(x.toDateString()===new Date().toDateString()){const n=new Date();s=s.filter(t=>{const [h,m]=t.split(':');return +h*60+ +m>n.getHours()*60+n.getMinutes()+30})}if(s.length)return dayLabel(x)+', '+s[0]}return '—'}
+
+/* ---------- SOS ---------- */
+function sos(){
+  const c=S.card;
+  openSheet(`<div class="row" style="gap:12px"><div class="ava" style="background:var(--red)">SOS</div><div><h1 style="font-size:24px">Ёрии таъҷилӣ</h1><p class="muted">Агар ҳаёт дар хатар бошад — дарҳол занг занед</p></div></div>
+   <div style="margin-top:14px">
+    <a class="call main" href="tel:103"><span class="n">103</span><div><h3 style="font-size:17px">Ёрии таъҷилии тиббӣ</h3><p style="font-size:13px;opacity:.9">Занг задан</p></div></a>
+    <a class="call" href="tel:112"><span class="n">112</span><div><h3>Рақами ягонаи таъҷилӣ</h3><p class="muted">Ҳамаи хадамоти наҷот</p></div></a>
+    <div class="grid2"><a class="call" href="tel:101" style="margin:0"><span class="n" style="width:46px;font-size:22px">101</span><div><h3 style="font-size:14px">Сӯхтор</h3></div></a><a class="call" href="tel:102" style="margin:0"><span class="n" style="width:46px;font-size:22px">102</span><div><h3 style="font-size:14px">Милиса</h3></div></a></div>
+   </div>
+   <h2>Ба диспетчер бигӯед</h2>
+   <div class="info" style="margin-top:0">
+    <div class="sign"><span class="e">📍</span><div><b>Суроғаи дақиқ</b><p class="muted">кӯча, хона, даромадгоҳ, ошёна</p></div></div>
+    <div class="sign"><span class="e">❗</span><div><b>Чӣ шуд</b><p class="muted">аломатҳо ва кай сар шуд</p></div></div>
+    <div class="sign"><span class="e">👤</span><div><b>Синну соли бемор</b><p class="muted">ва оё ӯ ҳушёр аст ва нафас мегирад</p></div></div>
+    <div class="sign"><span class="e">📞</span><div><b>Рақами телефони худ</b><p class="muted">ва то омадани духтур телефонро набандед</p></div></div>
+   </div>
+   ${c.blood||c.allergy||c.chronic?`<h2>Корти тиббии ман</h2><div class="mc"><div class="grid2"><div><div class="k">Гурӯҳи хун</div><div class="v">${esc(c.blood)||'—'}</div></div><div><div class="k">Аллергия</div><div class="v">${esc(c.allergy)||'—'}</div></div><div><div class="k">Бемориҳо</div><div class="v">${esc(c.chronic)||'—'}</div></div><div><div class="k">Тамоси наздик</div><div class="v">${esc(c.contact)||'—'}</div></div></div></div><p class="muted" style="margin-top:6px">Инро ба духтури ёрии таъҷилӣ нишон диҳед.</p>`:''}
+   <button class="btn light" style="margin-top:14px" onclick="closeSheet();signs()">Кай бояд дарҳол ба 103 занг зад?</button>`);
+}
+function signs(){
+  openSheet(`<h1 style="font-size:24px">Аломатҳои хатарнок</h1><p class="muted" style="margin:4px 0 12px">Агар яке аз инҳоро бинед — <b style="color:var(--red)">дарҳол ба 103 занг занед</b>, интизор нашавед.</p>
+   <div class="info" style="margin-top:0">
+    <div class="sign"><span class="e">💔</span><div><b>Дарди сахти қафаси сина</b><p class="muted">хусусан агар ба даст, гардан ё ҷоғ гузарад</p></div></div>
+    <div class="sign"><span class="e">🧠</span><div><b>Аломатҳои сакта</b><p class="muted">як тарафи рӯй афтода, даст суст, гап нофаҳмо</p></div></div>
+    <div class="sign"><span class="e">🫁</span><div><b>Нафастангии сахт</b><p class="muted">лабҳо кабуд, гап задан душвор</p></div></div>
+    <div class="sign"><span class="e">😶</span><div><b>Беҳушӣ</b><p class="muted">одам ба гап ҷавоб намедиҳад</p></div></div>
+    <div class="sign"><span class="e">🩸</span><div><b>Хунравии сахт</b><p class="muted">ки бо пахш кардан намеистад</p></div></div>
+    <div class="sign"><span class="e">⚡</span><div><b>Рагкашӣ (судорога)</b><p class="muted">хусусан бори аввал ё дароз</p></div></div>
+    <div class="sign"><span class="e">🔥</span><div><b>Сӯхтагии калон</b><p class="muted">ё сӯхтагии рӯй ва роҳи нафас</p></div></div>
+    <div class="sign"><span class="e">☠️</span><div><b>Заҳролудшавӣ</b><p class="muted">дору, химикат ё газ</p></div></div>
+   </div>
+   <div class="warn" style="margin-top:12px">Ин рӯйхат маслиҳати духтурро иваз намекунад. Агар шубҳа дошта бошед — беҳтар аст занг занед.</div>
+   <a class="btn red" style="margin-top:12px" href="tel:103">📞 Занг ба 103</a>`);
+}
+
+/* ---------- RENDER ---------- */
+const ICONS={
+ home:'<path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
+ docs:'<circle cx="12" cy="7" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6M12 15v4M10 17h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+ clinics:'<path d="M4 21V7l8-4 8 4v14M4 21h16M10 21v-4h4v4M12 8v4M10 10h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>',
+ appts:'<rect x="3" y="5" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 3v4M16 3v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+ me:'<path d="M12 21s-8-4.5-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 6.5-8 11-8 11z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 11h2l1-2 2 4 1-2h2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>'
+};
+function render(){
+  const a=document.getElementById('app');
+  if(view==='doc'){a.innerHTML=docView();return}
+  if(view==='clinic'){a.innerHTML=clinicView();return}
+  if(view==='book'){a.innerHTML=bookView();return}
+  const up=S.appts.filter(x=>x.st!=='cancel').length;
+  a.innerHTML=`<header class="top">${ECG}<div class="brand"><div class="logo"><span class="cross"></span>ТАБИБ</div><button class="citybtn" onclick="cityPick()">📍 ${S.city} ▾</button></div></header>
+   <main>${({home,docs:docsView,clinics:clinicsView,appts:apptsView,me:meView})[tab]()}</main>
+   <nav>${[['home','Асосӣ'],['docs','Духтурон'],['clinics','Клиникаҳо'],['appts','Сабтҳо'],['me','Корти ман']].map(([k,l])=>`<button class="${tab===k?'on':''}" onclick="tab='${k}';render();scrollTo(0,0)"><svg viewBox="0 0 24 24">${ICONS[k]}</svg>${l}${k==='appts'&&up?`<span class="badge">${up}</span>`:''}</button>`).join('')}</nav>`;
+}
+function cityPick(){openSheet(`<h1 style="font-size:24px;margin-bottom:12px">Шаҳр</h1>${CITIES.map(c=>`<div class="card row between" style="cursor:pointer;${c===S.city?'border:2px solid var(--blue)':''}" onclick="S.city='${c}';save();closeSheet();render()"><div><h3>${c}</h3><p class="muted">${DOCS.filter(d=>d.city===c).length} духтур · ${CLINICS.filter(x=>x.city===c).length} клиника</p></div>${c===S.city?'<b>✓</b>':''}</div>`).join('')}`)}
+function home(){
+  const next=S.appts.filter(x=>x.st!=='cancel').sort((a,b)=>(a.day+a.time).localeCompare(b.day+b.time))[0];
+  return `<div class="sos" onclick="sos()"><div class="ring">103</div><div style="flex:1"><h3>ЁРИИ ТАЪҶИЛӢ</h3><p style="font-size:13.5px;opacity:.92;margin-top:2px">Як тугма — занг ба 103 ва 112, маслиҳат то омадани духтур</p></div><span style="font-size:22px">›</span></div>
+  ${next?(()=>{const d=D(next.doc);return `<h2>Қабули наздик</h2><div class="appt row" style="cursor:pointer" onclick="tab='appts';render()">${docAva(d,46)}<div style="flex:1"><h3>${esc(d.n)}</h3><p class="muted">${SPEC[d.spec].n} · ${fmtDay(next.day)}, ${next.time}</p></div><span class="tag ${next.st==='ok'?'t-green':'t-amber'}">${next.st==='ok'?'Тасдиқ':'Интизор'}</span></div>`})():''}
+  <h2>Ба кадом духтур лозим?</h2>
+  <div class="specs">${SK.map(s=>`<div class="spec" onclick="spec='${s}';tab='docs';render();scrollTo(0,0)"><span class="e">${SPEC[s].e}</span>${SPEC[s].n}</div>`).join('')}</div>
+  <h2>Хизматҳо</h2>
+  <div class="grid2">
+   <div class="tile" onclick="tab='docs';spec='all';render()"><div class="ic" style="background:var(--blue2)">📅</div><h3>Сабт ба духтур</h3><p class="muted">вақти холиро интихоб кунед</p></div>
+   <div class="tile" onclick="tab='docs';spec='all';q='';onlineOnly=true;render()"><div class="ic" style="background:var(--green2)">💻</div><h3>Машварати онлайн</h3><p class="muted">бо видео аз хона</p></div>
+   <div class="tile" onclick="tab='clinics';erOnly=true;render()"><div class="ic" style="background:var(--red2)">🏥</div><h3>Қабули 24/7</h3><p class="muted">клиникаҳои шабонарӯзӣ</p></div>
+   <div class="tile" onclick="tab='me';render()"><div class="ic" style="background:var(--amber2)">🗂️</div><h3>Корти тиббӣ</h3><p class="muted">хун, аллергия, бемориҳо</p></div>
+  </div>
+  ${deferredPrompt?`<div class="install show"><span style="font-size:24px">📲</span><div style="flex:1"><h3>Табибро насб кунед</h3><p class="muted">мисли барнома дар экрани телефон</p></div><button class="btn" style="width:auto;padding:10px 14px" onclick="installApp()">Насб</button></div>`:''}
+  <p class="demo">Прототип: клиникаҳо ва духтурон намунавӣ мебошанд. Рақамҳои 103 ва 112 воқеӣ ҳастанд.</p>`;
+}
+let onlineOnly=false,erOnly=false;
+function docsList(){const qq=q.trim().toLowerCase();return DOCS.filter(d=>d.city===S.city&&(spec==='all'||d.spec===spec)&&(!onlineOnly||d.online)&&(!qq||(d.n+' '+SPEC[d.spec].n).toLowerCase().includes(qq)))}
+function docCard(d){const c=CL(d.clinic);return `<div class="card doc" onclick="openDoc('${d.id}')">${docAva(d)}<div style="flex:1;min-width:0"><div class="row between"><h3>${esc(d.n)}</h3><b style="font-size:14px">${d.price} сом.</b></div><p class="muted">${SPEC[d.spec].e} ${SPEC[d.spec].n} · таҷриба ${d.exp} сол</p><p class="muted" style="font-size:12.5px">${c.e} ${c.n}</p><div><span class="tag t-green">🕐 ${nearest(d)}</span>${d.online?'<span class="tag t-blue">💻 онлайн</span>':''}</div></div></div>`}
+function docsView(){
+  const L=docsList();
+  return `<h1>Духтурон</h1><p class="muted" style="margin:2px 0 12px">ш. ${S.city}</p>
+  <div class="search"><span>🔎</span><input type="text" id="q" placeholder="Ном ё ихтисос" value="${esc(q)}" oninput="q=this.value;const p=this.selectionStart;render();const e=document.getElementById('q');e.focus();e.setSelectionRange(p,p)"></div>
+  <div class="chips"><button class="${spec==='all'?'on':''}" onclick="spec='all';render()">Ҳама</button>${SK.map(s=>`<button class="${spec===s?'on':''}" onclick="spec='${s}';render()">${SPEC[s].e} ${SPEC[s].n}</button>`).join('')}</div>
+  <div class="row" style="margin-bottom:10px"><label class="row" style="font-size:13.5px;font-weight:600;cursor:pointer"><input type="checkbox" ${onlineOnly?'checked':''} onchange="onlineOnly=this.checked;render()"> Танҳо машварати онлайн</label></div>
+  ${L.map(docCard).join('')||'<p class="muted">Духтур ёфт нашуд. Филтрро иваз кунед.</p>'}`;
+}
+function clinicsView(){
+  const L=CLINICS.filter(c=>c.city===S.city&&(!erOnly||c.er)).sort((a,b)=>a.dist-b.dist);
+  return `<h1>Клиникаҳо</h1><p class="muted" style="margin:2px 0 12px">ш. ${S.city}</p>
+  <div class="seg" style="margin-bottom:12px"><button class="${!erOnly?'on':''}" onclick="erOnly=false;render()">Ҳама</button><button class="${erOnly?'on':''}" onclick="erOnly=true;render()">🚨 Қабули 24/7</button></div>
+  ${L.map(c=>`<div class="card" style="cursor:pointer" onclick="openClinic('${c.id}')"><div class="row"><div class="ava" style="background:#222A38;font-size:28px">${c.e}</div><div style="flex:1"><div class="row between"><h3>${c.n}</h3><span class="muted" style="font-weight:700">${c.dist} км</span></div><p class="muted">📍 ${c.a}</p><div>${c.er?'<span class="tag t-red">🚨 24/7</span>':`<span class="tag t-grey">🕐 ${c.h}</span>`}<span class="tag t-blue">${DOCS.filter(d=>d.clinic===c.id).length} духтур</span><span class="tag t-grey">НАМУНА</span></div></div></div></div>`).join('')}`;
+}
+function openDoc(id){cur=id;view='doc';render();scrollTo(0,0)}
+function openClinic(id){cur=id;view='clinic';render();scrollTo(0,0)}
+function docView(){
+  const d=D(cur),c=CL(d.clinic);
+  return `<main style="padding-bottom:110px"><div class="hero"><div class="row between"><button class="back" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#fff" onclick="view=null;render()">←</button><span class="tag t-grey" style="margin:0">НАМУНА</span></div>
+   <div class="row" style="margin-top:16px;gap:14px">${docAva(d,76)}<div><h1 style="font-size:25px">${esc(d.n)}</h1><p class="muted">${SPEC[d.spec].e} ${SPEC[d.spec].n}</p></div></div>
+   <div class="grid2" style="margin-top:16px;grid-template-columns:1fr 1fr 1fr"><div><p class="muted" style="font-size:12px">Таҷриба</p><b>${d.exp} сол</b></div><div><p class="muted" style="font-size:12px">Қабул</p><b>${d.price} сомонӣ</b></div><div><p class="muted" style="font-size:12px">Наздиктарин</p><b style="font-size:13px">${nearest(d)}</b></div></div></div>
+   <div class="info"><div class="li"><div class="ic">${c.e}</div><div><p class="muted">Клиника</p><a onclick="openClinic('${c.id}')" style="font-weight:700;cursor:pointer;color:var(--blue)">${c.n}</a><p class="muted" style="font-size:12.5px">ш. ${c.city}, ${c.a}</p></div></div>
+   <div class="li"><div class="ic">🗣️</div><div><p class="muted">Забонҳо</p><b>${d.lang}</b></div></div>
+   <div class="li"><div class="ic">💻</div><div><p class="muted">Машварати онлайн</p><b>${d.online?'Ҳа, бо видео':'Не, танҳо дар клиника'}</b></div></div></div>
+   <div class="warn" style="margin-top:12px">Агар ҳолат вазнин бошад — сабтро интизор нашавед, ба <b>103</b> занг занед.</div>
+  </main><div class="sticky"><button class="btn red" onclick="startBook('${d.id}')">Сабт ба қабул</button></div>`;
+}
+function clinicView(){
+  const c=CL(cur),ds=DOCS.filter(d=>d.clinic===c.id);
+  return `<main><div class="hero"><div class="row between"><button class="back" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#fff" onclick="view=null;render()">←</button><span class="tag t-grey" style="margin:0">НАМУНА</span></div>
+   <div class="row" style="margin-top:16px;gap:14px"><div class="ava" style="background:#fff;width:72px;height:72px;font-size:36px;border-radius:20px">${c.e}</div><div><h1 style="font-size:25px">${c.n}</h1><p class="muted">ш. ${c.city}, ${c.a}</p></div></div>
+   <div style="margin-top:12px">${c.er?'<span class="tag t-red">🚨 Қабули таъҷилӣ 24/7</span>':`<span class="tag t-grey">🕐 ${c.h}</span>`}<span class="tag t-blue">${c.dist} км аз шумо</span></div></div>
+   <h2>Шуъбаҳо</h2><div class="chips" style="flex-wrap:wrap">${c.dep.map(s=>`<button>${SPEC[s].e} ${SPEC[s].n}</button>`).join('')}</div>
+   <h2>Духтурон</h2>${ds.map(docCard).join('')||'<p class="muted">Ҳоло духтур илова нашудааст.</p>'}
+   <p class="demo">Ин клиникаи намунавӣ аст. Дар версияи воқеӣ клиникаҳо суроға, телефон ва ҷадвали худро ворид мекунанд.</p></main>`;
+}
+/* ---------- САБТ ---------- */
+function startBook(id){bk={doc:id,type:'clinic',day:null,time:null,who:'self',name:S.card.name||'',phone:'',note:''};view='book';render();scrollTo(0,0)}
+function bookView(){
+  const d=D(bk.doc),days=nextDays();
+  const ready=bk.day&&bk.time&&bk.name.trim()&&bk.phone.replace(/\D/g,'').length>=9;
+  const chk="document.getElementById('go').disabled=!(bk.day&&bk.time&&bk.name.trim()&&bk.phone.replace(/\\D/g,'').length>=9)";
+  return `<main style="padding-bottom:110px"><div class="row between"><button class="back" onclick="view='doc';render()">←</button><span class="muted" style="font-weight:600">Сабт ба қабул</span></div>
+  <div class="card row" style="margin-top:14px">${docAva(d,48)}<div><h3>${esc(d.n)}</h3><p class="muted">${SPEC[d.spec].n} · ${d.price} сомонӣ</p></div></div>
+  ${d.online?`<label class="f">Намуди қабул</label><div class="seg"><button class="${bk.type==='clinic'?'on':''}" onclick="bk.type='clinic';render()">🏥 Дар клиника</button><button class="${bk.type==='online'?'on':''}" onclick="bk.type='online';render()">💻 Онлайн</button></div>`:''}
+  <label class="f">Рӯз</label><div class="days">${days.map(x=>{const v=iso(x);return `<button class="${bk.day===v?'on':''}" onclick="bk.day='${v}';bk.time=null;render()"><span style="font-size:11.5px">${x.toDateString()===new Date().toDateString()?'Имрӯз':DAYS[x.getDay()]}</span><b>${x.getDate()}</b><span style="font-size:11px">${MONTHS[x.getMonth()].slice(0,3)}</span></button>`}).join('')}</div>
+  ${bk.day?`<label class="f">Вақти холӣ</label><div class="slots">${slotsFor(d,bk.day).map(s=>`<button class="${bk.time===s?'on':''}" onclick="bk.time='${s}';render()">${s}</button>`).join('')}</div>`:''}
+  <label class="f">Барои кӣ</label><div class="seg"><button class="${bk.who==='self'?'on':''}" onclick="bk.who='self';render()">Барои худам</button><button class="${bk.who==='child'?'on':''}" onclick="bk.who='child';render()">Кӯдак</button><button class="${bk.who==='other'?'on':''}" onclick="bk.who='other';render()">Наздикон</button></div>
+  <label class="f">Маълумот</label>
+  <input type="text" placeholder="Ному насаби бемор" value="${esc(bk.name)}" oninput="bk.name=this.value;${chk}">
+  <input type="tel" placeholder="+992 __ ___ __ __" value="${esc(bk.phone)}" oninput="bk.phone=this.value;${chk}">
+  <textarea rows="2" placeholder="Шикоят (ихтиёрӣ)" oninput="bk.note=this.value">${esc(bk.note)}</textarea>
+  </main><div class="sticky"><button class="btn red" id="go" ${ready?'':'disabled'} onclick="confirmBook()">Тасдиқ кардан</button></div>`;
+}
+function confirmBook(){
+  const code='TB-'+Math.random().toString(36).slice(2,6).toUpperCase(), d=D(bk.doc), c=CL(d.clinic);
+  const a={...bk,code,ts:Date.now(),st:'wait'};S.appts.unshift(a);save();view=null;
+  document.getElementById('app').innerHTML=`<main style="padding-top:30px"><div class="ok"><div class="big">✓</div><h1 style="font-size:25px">Шумо сабт шудед!</h1>
+   <p class="muted" style="margin-top:6px;line-height:1.5">Клиника вақтро тасдиқ мекунад. Як рӯз пеш ёдрас мекунем.</p>
+   <div class="code">${code}</div>
+   <div class="info" style="text-align:left;margin-top:0">
+    <div class="li"><div class="ic">👨‍⚕️</div><div><p class="muted">Духтур</p><b>${esc(d.n)}</b><p class="muted" style="font-size:12.5px">${SPEC[d.spec].n}</p></div></div>
+    <div class="li"><div class="ic">📅</div><div><p class="muted">Рӯз ва вақт</p><b>${fmtDay(bk.day)}, соати ${bk.time}</b></div></div>
+    <div class="li"><div class="ic">${bk.type==='online'?'💻':c.e}</div><div><p class="muted">${bk.type==='online'?'Машварати онлайн':'Клиника'}</p><b>${bk.type==='online'?'Пайванди видео пеш аз қабул меояд':c.n}</b>${bk.type==='online'?'':`<p class="muted" style="font-size:12.5px">ш. ${c.city}, ${c.a}</p>`}</div></div></div>
+   <button class="btn" style="margin-top:14px" onclick="tab='appts';render()">Сабтҳои ман</button>
+   <p class="demo">Прототип: дархост ба клиника фиристода намешавад.</p></div></main>`;
+  scrollTo(0,0);
+  setTimeout(()=>{if(a.st==='wait'){a.st='ok';save();if(!view&&tab==='appts')render();toast('✅ Сабт тасдиқ шуд')}},5000);
+}
+function apptsView(){
+  const ST={wait:['Интизори тасдиқ','t-amber','#B7791F'],ok:['Тасдиқ шуд','t-green','#2E9E6B'],cancel:['Бекор шуд','t-grey','#9AA5B1']};
+  return `<h1>Сабтҳои ман</h1>
+  ${S.appts.length?S.appts.map((x,i)=>{const d=D(x.doc),c=CL(d.clinic),s=ST[x.st];return `<div class="appt" style="border-left-color:${s[2]};margin-top:12px"><div class="row between"><span class="tag ${s[1]}" style="margin:0">${s[0]}</span><span class="muted">${x.code}</span></div>
+   <div class="row" style="margin-top:10px">${docAva(d,46)}<div><h3>${esc(d.n)}</h3><p class="muted">${SPEC[d.spec].n} · ${x.type==='online'?'💻 онлайн':c.n}</p></div></div>
+   <div class="row" style="margin-top:10px;gap:16px"><b>📅 ${fmtDay(x.day)}</b><b>🕐 ${x.time}</b>${x.who!=='self'?`<span class="muted">${x.who==='child'?'кӯдак':'наздикон'}: ${esc(x.name)}</span>`:''}</div>
+   ${x.st!=='cancel'?`<button class="btn ghost" style="margin-top:10px;padding:10px" onclick="S.appts[${i}].st='cancel';save();render();toast('Сабт бекор шуд')">Бекор кардан</button>`:''}</div>`}).join(''):`<div class="ok" style="margin-top:14px"><div class="big" style="background:#222A38;color:var(--slate)">📅</div><h3>Ҳоло сабт нест</h3><p class="muted" style="margin:6px 0 14px">Духтурро интихоб кунед ва ба қабул сабт шавед.</p><button class="btn" onclick="tab='docs';render()">Ҷустуҷӯи духтур</button></div>`}`;
+}
+function meView(){
+  const c=S.card;
+  const f=(k,l,ph)=>`<label class="f">${l}</label><input type="text" value="${esc(c[k])}" placeholder="${ph}" oninput="S.card.${k}=this.value;save()">`;
+  return `<h1>Корти тиббии ман</h1><p class="muted" style="margin:4px 0 12px">Ин маълумот дар ҳолати таъҷилӣ ба духтур кӯмак мекунад. Он танҳо дар телефони шумо нигоҳ дошта мешавад.</p>
+  <div class="mc"><div class="row between"><div class="row"><span class="cross" style="width:24px;height:24px"></span><b class="cond" style="font-size:18px">КОРТИ ТИББӢ</b></div><span class="k">${esc(c.blood)||'—'}</span></div><div class="v" style="font-size:20px;margin-top:14px">${esc(c.name)||'Ному насаб'}</div><div class="grid2" style="margin-top:10px"><div><div class="k">Аллергия</div><div class="v">${esc(c.allergy)||'—'}</div></div><div><div class="k">Тамоси наздик</div><div class="v">${esc(c.contact)||'—'}</div></div></div></div>
+  ${f('name','Ному насаб','')}
+  <label class="f">Гурӯҳи хун</label><select onchange="S.card.blood=this.value;save();render()"><option value="">— интихоб кунед —</option>${['O(I) Rh+','O(I) Rh−','A(II) Rh+','A(II) Rh−','B(III) Rh+','B(III) Rh−','AB(IV) Rh+','AB(IV) Rh−'].map(b=>`<option ${c.blood===b?'selected':''}>${b}</option>`).join('')}</select>
+  ${f('allergy','Аллергия','масалан: пенитсиллин, асал')}
+  ${f('chronic','Бемориҳои музмин','масалан: диабет, фишори баланд')}
+  ${f('meds','Доруҳое, ки мегиред','')}
+  ${f('contact','Тамоси наздик','ном ва рақам')}
+  <button class="btn" onclick="render();toast('Корт нигоҳ дошта шуд ✓')">Нигоҳ доштан</button>`;
+}
+S.appts.forEach(a=>{if(a.st==='wait')a.st='ok'});save();
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;if(tab==='home'&&!view)render()});
+function installApp(){if(!deferredPrompt)return;deferredPrompt.prompt();deferredPrompt.userChoice.then(()=>{deferredPrompt=null;render()})}
+try{if('serviceWorker' in navigator&&location.protocol==='https:'){navigator.serviceWorker.register('sw.js').catch(()=>{})}}catch(e){}
+render();
+try{if(new URLSearchParams(location.search).get('sos'))sos()}catch(e){}
+</script>
+</body>
+</html>

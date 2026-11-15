@@ -1,0 +1,22 @@
+{
+  "name": "Табиб — духтур, клиника ва ёрии таъҷилӣ",
+  "short_name": "Табиб",
+  "description": "Ёрии таъҷилӣ 103/112, ҷустуҷӯи духтур, сабт ба қабул ва корти тиббӣ.",
+  "lang": "tg",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0B0F17",
+  "theme_color": "#0B0F17",
+  "categories": ["medical", "health"],
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "shortcuts": [
+    {"name": "Ёрии таъҷилӣ 103", "short_name": "SOS", "url": "/?sos=1", "icons": [{"src": "icons/icon-192.png", "sizes": "192x192"}]}
+  ]
+}
